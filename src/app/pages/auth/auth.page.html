@@ -1,0 +1,35 @@
+<app-header title="Iniciar Sesión"></app-header>
+
+<ion-content>
+
+  <div class="d-flex-center">
+    <form [formGroup]="form" class="auth-form">
+      <app-custominput
+        autocomplete="email"
+        icon="mail-outline"
+        [control]="form.controls.email"
+        type="email"
+        label="Correo electronico:"
+      >
+      </app-custominput>
+
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+        <div *ngIf="form.controls.email.errors?.['required']">Introduzca un correo, este campo es obligatorio</div>
+        <div *ngIf="form.controls.email.errors?.['email']">Introduzca un correo válido</div>
+      </div>
+  
+      <app-custominput
+        icon="lock-closed-outline"
+        [control]="form.controls.password"
+        type="password"
+        label="Contraseña"
+      ></app-custominput>
+
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+        <div *ngIf="form.controls.password.errors?.['required']">Introduzca una contraseña, este campo es obligatorio</div>
+      </div>
+    </form>
+  </div>
+
+
+</ion-content>
